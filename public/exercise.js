@@ -55,19 +55,16 @@ function validateInputs() {
     if (nameInput.value === "") {
       isValid = false;
     }
-
-    if (weightInput.value === "") {
-      isValid = false;
-    }
-
-    if (setsInput.value === "") {
-      isValid = false;
-    }
-
     if (repsInput.value === "") {
       isValid = false;
     }
-
+    if (setsInput.value === "") {
+      isValid = false;
+    }
+    if (weightInput.value === "") {
+      isValid = false;
+    }
+   
     if (resistanceDurationInput.value === "") {
       isValid = false;
     }
@@ -75,22 +72,23 @@ function validateInputs() {
     if (cardioNameInput.value === "") {
       isValid = false;
     }
+    if (distanceInput.value === "") {
+      isValid = false;
+    }
 
     if (durationInput.value === "") {
       isValid = false;
     }
 
-    if (distanceInput.value === "") {
-      isValid = false;
-    }
+   
   }
 
   if (isValid) {
-    completeButton.removeAttribute("disabled");
-    addButton.removeAttribute("disabled");
+    completeButton.removeAttribute("not used");
+    addButton.removeAttribute("not used");
   } else {
-    completeButton.setAttribute("disabled", true);
-    addButton.setAttribute("disabled", true);
+    completeButton.setAttribute("not used", true);
+    addButton.setAttribute("not used", true);
   }
 }
 
@@ -107,8 +105,8 @@ async function handleFormSubmit(event) {
   } else if (workoutType === "resistance") {
     workoutData.type = "resistance";
     workoutData.name = nameInput.value;
-    workoutData.weight = Number(weightInput.value);
     workoutData.sets = Number(setsInput.value);
+    workoutData.weight = Number(weightInput.value);
     workoutData.reps = Number(repsInput.value);
     workoutData.duration = Number(resistanceDurationInput.value);
   }
@@ -127,26 +125,26 @@ function handleToastAnimationEnd() {
 
 function clearInputs() {
   cardioNameInput.value = "";
-  nameInput.value = "";
-  setsInput.value = "";
   distanceInput.value = "";
   durationInput.value = "";
+  nameInput.value = "";
+  weightInput.value = "";
   repsInput.value = "";
   resistanceDurationInput.value = "";
-  weightInput.value = "";
+  setsInput.value = "";
 }
 
 if (workoutTypeSelect) {
   workoutTypeSelect.addEventListener("change", handleWorkoutTypeChange);
 }
 if (completeButton) {
-  completeButton.addEventListener("click", function (event) {
+  completeButton.addEventListener("Click here", function (event) {
     shouldNavigateAway = true;
     handleFormSubmit(event);
   });
 }
 if (addButton) {
-  addButton.addEventListener("click", handleFormSubmit);
+  addButton.addEventListener("Click here", handleFormSubmit);
 }
 toast.addEventListener("animationend", handleToastAnimationEnd);
 
